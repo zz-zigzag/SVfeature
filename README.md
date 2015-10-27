@@ -1,5 +1,3 @@
-
-
 ##run and usage
 * make
 * ./SVfeature -d -b trio_high_cov.25.list -o output
