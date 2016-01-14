@@ -165,7 +165,7 @@ double BAM::getDepth(char *chrName, int from, int to)
     }
     if (regionLen == 0)
         return 0.0;
-    avgDepth = sumDepth / regionLen;
+    avgDepth = sumDepth*1.0 / regionLen;
     pclose(fp);
     free(sys);
     return avgDepth;

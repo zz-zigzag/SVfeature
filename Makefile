@@ -1,7 +1,3 @@
-
-
-WORKDIR = `pwd`
-
 CC = gcc
 CXX = g++
 AR = ar
