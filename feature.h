@@ -752,7 +752,7 @@ void Feature::getRegionStats(char *chrName, int start, int end, int &um_ef, int 
     for(int j = bam->getIdByPos(s, chrName);\
         j < bam->recordCnt && bamR[j]->beginPos <= e; j++)
     {
-        if(bamR[j]->flag & 0x4 && bamR[j]->beginPos < s)
+        if(bamR[j]->flag & 0x4 || bamR[j]->beginPos < s)
             continue;
         bool unique_flag = bam->isUniquelyMapped(bamR[j]);
         if(unique_flag)
