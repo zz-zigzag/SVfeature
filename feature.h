@@ -332,11 +332,6 @@ void Feature::deletionFeature(double percent_diff, int max_diff)
         if(mm_e_discord)   mapQ_mm_e_discord /= mm_e_discord;
         if(mm_e_concord)   mapQ_mm_e_concord /= mm_e_concord;
 
-        double div = (indelLen + 2*(insertSize - readLen))*1.0/(2*readLen);
-        um_ef_concord /= div;
-        um_e_concord /= div;
-        mm_ef_concord /= div;
-        mm_e_concord /= div;
 
 
         fprintf(fpstats, "%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t",um_ef_discord,um_ef_concord,um_e_discord,um_e_concord,\
@@ -346,6 +341,11 @@ void Feature::deletionFeature(double percent_diff, int max_diff)
                 mapQ_um_e_concord,mapQ_mm_ef_discord,mapQ_mm_ef_concord,mapQ_mm_e_discord,mapQ_mm_e_concord);
 */
 
+        double div = (indelLen + 2*(insertSize - readLen))*1.0/(2*readLen);
+        um_ef_concord /= div;
+        um_e_concord /= div;
+        mm_ef_concord /= div;
+        mm_e_concord /= div;
 
 
         double all;
