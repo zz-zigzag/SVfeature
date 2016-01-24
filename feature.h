@@ -334,7 +334,7 @@ void Feature::deletionFeature(double percent_diff, int max_diff)
 
 
 
-        fprintf(fpstats, "%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t%.2f\t",um_ef_discord,um_ef_concord,um_e_discord,um_e_concord,\
+        fprintf(fpstats, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t",um_ef_discord,um_ef_concord,um_e_discord,um_e_concord,\
                 mm_ef_discord,mm_ef_concord,mm_e_discord,mm_e_concord);
 /*
         fprintf(fpstats, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t",mapQ_um_ef_discord,mapQ_um_ef_concord,mapQ_um_e_discord,\
@@ -617,7 +617,7 @@ void Feature::deletionFeature(double percent_diff, int max_diff)
         down_depth = bam->getDepth(indel[i] ->chrName, brk2, brk3);
         //print read depth
         double in_up = in_depth+up_depth;   ISEXP(in_up);
-        double in_down = in_depth+up_depth;   ISEXP(in_down);
+        double in_down = in_depth+down_depth;   ISEXP(in_down);
         fprintf(fpstats, "%f\t%f\t%f\t", in_depth,up_depth,down_depth);
         fprintf(fpout, "%f\t%f\t%f\t%f\t",up_depth/(in_up),in_depth/(in_up),\
                 in_depth/(in_down),down_depth/(in_down));
