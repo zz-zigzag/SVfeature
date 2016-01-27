@@ -114,6 +114,7 @@ void Feature::deletionFeature(double percent_diff, int max_diff)
                 unique_mate_flag = bam->isUniquelyMapped(bamR[mID]);
             unique_flag  = bam->isUniquelyMapped(bamR[j]);
 
+
             if(!(bamR[j]->flag & 0x8) && mID != -1 && bamR[j]->rNextId == bamR[j]->rID &&\
             pos < mpos && pos < brk2 + _diff_ && mpos > brk1 - _diff_)      //the mate unmapped or mapped in different chromosome
             {
