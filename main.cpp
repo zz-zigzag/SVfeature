@@ -42,15 +42,14 @@ static int usage(void )
     fprintf(stderr, "                   and std_dev of insert size, variant_file\n");
     fprintf(stderr, "                   For example: /data/test.bam 100 500 50 /data/test.v\n");
     fprintf(stderr, "                   Per line of variant_file:\n");
-    fprintf(stderr, "                   if deletion: chr, start, end+1, isExist(0/1)\n");
-    fprintf(stderr, "                   if insertion: chr, start, length, isExist(0/1)\n");
-    fprintf(stderr, "                   if indel: chr, type(D/I), start, end+1/length, isExist(0/1)\n");
-    fprintf(stderr, "         -o FILE   Output prefix\n");
+    fprintf(stderr, "                   if deletion: chr, start, end+1\n");
+    fprintf(stderr, "                   if insertion: chr, start, length\n");
+    fprintf(stderr, "                   if indel: chr, type(D/I), start, end+1/length\n");
     fprintf(stderr, "Optional parameters:\n");
     fprintf(stderr, "         -d        Output more detail feature\n");
     fprintf(stderr, "         -m INT    maximum base deviation of breakpoint [100]\n");
     fprintf(stderr, "         -e FLOAT  maximum percent deviation of breakpoint (-e*sv_length) [0.1]\n");
-    fprintf(stderr, "\n  ");
+    fprintf(stderr, "\n");
     return 1;
 }
 
@@ -64,12 +63,11 @@ int main(int argc, char* argv[])
     double insertSize = -1;
     double insertSizeStd  = -1;
     FILE *fpbam=NULL;
-    char *outputPrefix=NULL;
     char c;
     double percent_diff = 0.1;
     int max_diff = 100;
 
-    while((c = getopt(argc, argv,"diDIb:o:m:e:")) !=EOF )
+    while((c = getopt(argc, argv,"diDIb:m:e:")) !=EOF )
     {
         switch (c)
         {
@@ -79,15 +77,13 @@ int main(int argc, char* argv[])
             case 'i': mode = 2; break;
             case 'b':
                 openFile(&fpbam, optarg, "r"); break;
-            case 'o':
-                outputPrefix=optarg; break;
             case 'e': percent_diff = atof(optarg); break;
             case 'm': max_diff = atof(optarg); break;
             default: return usage();break;
         }
     }
     if(mode == -1 \
-       || fpbam == NULL || outputPrefix == NULL)
+       || fpbam == NULL)
        return usage();
 
 
@@ -103,8 +99,8 @@ int main(int argc, char* argv[])
         IndelList *indelList = new IndelList(svFilename, mode);
         FILE *fpout, *fpstats;
         char outputFilename[FILENAME_MAX], statsFilename[FILENAME_MAX];
-        sprintf(outputFilename, "%s_%d_normalized", outputPrefix, indiID);
-        sprintf(statsFilename, "%s_%d_absolute", outputPrefix, indiID);
+        sprintf(outputFilename, "%s_normalized", bamFilename);
+        sprintf(statsFilename, "%s_absolute", bamFilename);
         openFile(&fpout,outputFilename,"w");
         openFile(&fpstats,statsFilename,"w");
         Feature feature(bam, indelList, fpout, fpstats, insertSize, insertSizeStd, detail);

@@ -21,17 +21,17 @@ IndelRecord::IndelRecord(char* buffer, int mode)
     int lefPos, rigPos;
     if(mode == 0)
     {
-        sscanf(buffer, "%s%d%d%d", chrName, &lefPos, &rigPos, &isExist);
+        sscanf(buffer, "%s%d%d", chrName, &lefPos, &rigPos);
         len = rigPos - lefPos - 1;
     }
     else if(mode == 1)
     {
-        sscanf(buffer, "%s%d%d%d", chrName, &lefPos, &len, &isExist);
+        sscanf(buffer, "%s%d%d", chrName, &lefPos, &len);
         rigPos = lefPos + 1;
     }
     else
     {
-        sscanf(buffer, "%s%s%d%d%d", chrName, type, &lefPos, &rigPos, &isExist);
+        sscanf(buffer, "%s%s%d%d", chrName, type, &lefPos, &rigPos);
         if(type[0] == 'D')
         {
             len = rigPos - lefPos - 1;
