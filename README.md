@@ -1,6 +1,6 @@
 ##run and usage
 * make
-* ./SVfeature -D -b test.list -o output
+* ./SVfeature -D -b test.list
 
 ##note
 * need bai to each bam
