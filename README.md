@@ -1,9 +1,9 @@
-##run and usage
+## Run and Usage
 * make
 * ./SVfeature -D -b test.list
 
-##note
-* need bai to each bam
-* output format: label, feature1, feature2.......
+## Note
+* need bai for each bam
+* output format: feature1, feature2.......
 * need samtools in $PATH
-* compiling used SeqAn. SeqAn is an open source C++ library...	(www.seqan.de) see Makefile.
+* need SeqAn(www.seqan.de)

@@ -244,6 +244,7 @@ void Feature::deletionFeature(double percent_diff, int max_diff) {
         fprintf(fpstats, "%f\t%f\t%f\t%f\t%f\t%f\t%f\t%f\t",um_ef_discord,um_ef_concord,um_e_discord,um_e_concord,\
                 mm_ef_discord,mm_ef_concord,mm_e_discord,mm_e_concord);
         double div = (indelLen + 2*(insertSize - readLen))*1.0/(2*readLen);
+        //double div = (2*_diff_ + indelLen + 2*(insertSize - readLen))*1.0/(2*readLen);  //no matter
         um_ef_concord /= div;
         um_e_concord /= div;
         mm_ef_concord /= div;
