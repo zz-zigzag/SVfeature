@@ -1,9 +1,10 @@
 ## Run and Usage
 * make
-* ./SVfeature -D -b test.list
+* usage: `./SVfeature -D -b test.list` or `./SVfeature -D -e 0.5 -m 1000 -b test.list`
 
 ## Note
-* need bai for each bam
-* output format: feature1, feature2.......
-* need samtools in $PATH
-* need SeqAn(www.seqan.de)
+* Need bai for each bam
+* Output finename is `bam_filename_normalized` and `bam_filename_absolute`. The former is used for training model.
+* Output format: feature1, feature2.......
+* Need samtools in `$PATH`
+* Need [SeqAn](www.seqan.de) included
